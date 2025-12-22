@@ -1,0 +1,19 @@
+# Core Dependencies
+torch
+torchvision
+torchaudio
+microsoft-aurora
+
+# Data Processing & Visualization
+numpy
+pandas
+xarray
+netCDF4
+tqdm
+scikit-learn
+matplotlib
+tensorboard
+
+# Utilities
+defusedxml
+huggingface_hub
