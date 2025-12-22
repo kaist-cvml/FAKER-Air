@@ -3,12 +3,11 @@
 [](https://www.arxiv.org/abs/2511.22169)
 [](https://www.google.com/search?q=LICENSE.txt)
 
-\<p align="center"\>
-\<img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="800px"\>
-<br>
-\<em\>Figure 1: FAKER-Air effectively captures dynamic temporal variations in PM concentration over long horizons (120h), significantly reducing False Alarm Rates compared to standard foundation models.\</em\>
-\</p\>
-
+<p align="center">
+  <img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="800px">
+  <br>
+  <em>Figure 1: FAKER-Air effectively captures dynamic temporal variations...</em>
+</p>
 ## Introduction
 
 **FAKER-Air** (Forecast Alignment via Knowledge-guided Expected-Reward) is a two-stage framework for reliable, real-time, long-horizon (up to 5 days) Particulate Matter (PM) forecasting.
@@ -57,22 +56,21 @@ pip install xarray netCDF4 pandas scikit-learn matplotlib tqdm tensorboard huggi
 
 ## Dataset Preparation
 
-FAKER-Air utilizes the **CMAQ-OBS Regional Air Quality Dataset**. Unlike global reanalysis (CAMS), this dataset allows for real-time initialization without multi-day latency.
+FAKER-Air utilizes the **CMAQ-OBS Regional Air Quality Dataset**. The dataset is hosted on Hugging Face as compressed archives by year to ensure fast download speeds.
 
-The complete dataset is hosted on Hugging Face: [**2na-97/FAKER-Air**](https://huggingface.co/datasets/2na-97/FAKER-Air)
+**Repository:** [2na-97/FAKER-Air](https://huggingface.co/datasets/2na-97/FAKER-Air)
 
-### 1\. Download Data
+### 1. Download & Extract Data
 
-You can easily download the dataset using the `huggingface_hub` library. This method supports resume capability and handles large file structures efficiently.
+You can use the following script to download the compressed data and extract it automatically.
 
 **Prerequisites:**
-
 ```bash
-pip install huggingface_hub
+pip install huggingface_hub tqdm
 ```
-
 **Download Script:**
 Save the following as `download_data.py` and run it.
+
 
 ```python
 import os
@@ -97,10 +95,51 @@ snapshot_download(
 print("Download complete!")
 ```
 
-Run the command:
-
 ```bash
-python download_data.py
+import os
+import tarfile
+from huggingface_hub import snapshot_download
+from tqdm import tqdm
+
+REPO_ID = "2na-97/FAKER-Air"
+LOCAL_DIR = "./data"
+
+def extract_tar(tar_path, extract_path):
+    print(f"Extracting {os.path.basename(tar_path)}...")
+    with tarfile.open(tar_path, "r") as tar:
+        tar.extractall(path=extract_path)
+
+# 1. Download Compressed Data
+print("Downloading dataset...")
+download_path = snapshot_download(
+    repo_id=REPO_ID,
+    repo_type="dataset",
+    local_dir=LOCAL_DIR,
+    allow_patterns=["*.tar"], # Download only tar files
+    resume_download=True
+)
+
+# 2. Extract OBS
+obs_tar_dir = os.path.join(LOCAL_DIR, "data/packed_obs")
+obs_extract_dir = os.path.join(LOCAL_DIR, "obs_npz_27km")
+os.makedirs(obs_extract_dir, exist_ok=True)
+
+for tar_file in os.listdir(obs_tar_dir):
+    if tar_file.endswith(".tar"):
+        extract_tar(os.path.join(obs_tar_dir, tar_file), obs_extract_dir)
+
+# 3. Extract CMAQ
+cmaq_tar_dir = os.path.join(LOCAL_DIR, "data/packed_cmaq")
+cmaq_extract_dir = os.path.join(LOCAL_DIR, "cmaq_only_npy")
+os.makedirs(cmaq_extract_dir, exist_ok=True)
+
+for tar_file in os.listdir(cmaq_tar_dir):
+    if tar_file.endswith(".tar"):
+        extract_tar(os.path.join(cmaq_tar_dir, tar_file), cmaq_extract_dir)
+
+print("\nDataset is ready!")
+print(f"OBS: {obs_extract_dir}")
+print(f"CMAQ: {cmaq_extract_dir}")
 ```
 
 ### 2\. Directory Structure
