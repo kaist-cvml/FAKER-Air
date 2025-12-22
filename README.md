@@ -1,16 +1,19 @@
 # FAKER-Air: Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization
 
-[](https://www.arxiv.org/abs/2511.22169)
-[](https://www.google.com/search?q=LICENSE.txt)
+### ⭐ Link to Paper: [Link](https://www.arxiv.org/abs/2511.22169)
 
 <p align="center">
-  <img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="800px">
+  <img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="100%0px">
   <br>
   <em>Figure 1: FAKER-Air effectively captures dynamic temporal variations...</em>
 </p>
+
+
 ## Introduction
 
 **FAKER-Air** (Forecast Alignment via Knowledge-guided Expected-Reward) is a two-stage framework for reliable, real-time, long-horizon (up to 5 days) Particulate Matter (PM) forecasting.
+
+[](https://www.google.com/search?q=LICENSE.txt)
 
 While foundation models like **Aurora** offer global generality, they often fail to capture region-specific dynamics and suffer from **decision-cost mismatch**, leading to high False Alarm Rates (FAR) in operational settings. FAKER-Air addresses this by:
 
