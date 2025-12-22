@@ -300,11 +300,13 @@ FAKER-Air significantly outperforms the baseline (Aurora) and SFT-only models in
   * **False Alarm Rate (FAR):** Reduced by **47.3%** compared to SFT.
   * **F1-Score:** Improved by **3.5x** over Aurora.
 
-\<p align="center"\>
-\<img src="docs/figures/qualitative\_comparison.png" alt="Qualitative Results" width="800px"\>
-\</p\>
 
------
+<p align="center">
+  <img src="docs/figures/qualitative_comparison.png" alt="Qualitative Results" width="100%0px">
+  <br>
+</p>
+
+
 
 ## Citation
 
