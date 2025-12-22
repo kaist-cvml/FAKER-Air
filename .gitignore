@@ -37,4 +37,5 @@ mlruns/
 vis/
 runs/
 data/
+data_compressed/
 upload_data.py

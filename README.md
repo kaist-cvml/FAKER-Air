@@ -5,7 +5,7 @@
 <p align="center">
   <img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="100%0px">
   <br>
-  <em>Figure 1: FAKER-Air effectively captures dynamic temporal variations...</em>
+  <em>FAKER-Air effectively captures dynamic temporal variations in PM concentration over long horizons (120h), significantly reducing False Alarm Rates compared to standard foundation models.</em>
 </p>
 
 
