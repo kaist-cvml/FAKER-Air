@@ -1,4 +1,4 @@
-# FAKER-Air: Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization
+# [CVPR 2026] FAKER-Air: Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization
 
 ### ⭐ Link to Paper: [Link](https://www.arxiv.org/abs/2511.22169)
 
