@@ -1,6 +1,8 @@
 # [CVPR 2026] FAKER-Air: Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization
 
 ### ⭐ Link to Paper: [Link](https://www.arxiv.org/abs/2511.22169)
+### 📚 Link to Dataset: [Link](https://huggingface.co/datasets/2na-97/FAKER-Air)
+### 🍟 Link to Pretrained Weight: [Link](https://huggingface.co/2na-97/FAKER-Air)
 
 <p align="center">
   <img src="docs/figures/teaser.png" alt="FAKER-Air Teaser" width="100%0px">
